@@ -1,0 +1,4 @@
+# Bloquea el acceso directo a db_config.php desde el navegador
+<Files "db_config.php">
+    Require all denied
+</Files>

@@ -1,0 +1,38 @@
+services:
+
+  app:
+    build: .
+    container_name: wikisearch_app
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DB_HOST=db
+      - DB_USER=wikisearch
+      - DB_PASS=wikisearch123
+      - DB_NAME=wikipedia_search
+
+  db:
+    image: mysql:8.0
+    container_name: wikisearch_db
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: wikipedia_search
+      MYSQL_USER: wikisearch
+      MYSQL_PASSWORD: wikisearch123
+    volumes:
+      - ./setup_db.sql:/docker-entrypoint-initdb.d/setup_db.sql:ro
+      - db_data:/var/lib/mysql
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost", "-u", "wikisearch", "-pwikisearch123"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  db_data:

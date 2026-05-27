@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buscador Wikipedia</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container">
+            <div class="header-inner">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                    </svg>
+                    <span>WikiSearch</span>
+                </div>
+                <p class="header-subtitle">Busca cualquier término en Wikipedia</p>
+            </div>
+        </div>
+    </header>
+
+    <main class="site-main">
+        <div class="container">
+
+            <section class="search-section">
+                <form id="searchForm" class="search-form" novalidate>
+                    <div class="search-input-group">
+                        <label for="searchInput" class="sr-only">Término de búsqueda</label>
+                        <input
+                            type="text"
+                            id="searchInput"
+                            class="search-input"
+                            placeholder="Ingresa un término de búsqueda..."
+                            autocomplete="off"
+                            maxlength="200"
+                            required
+                        >
+                        <button type="submit" id="searchBtn" class="search-btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <span>Buscar</span>
+                        </button>
+                    </div>
+                </form>
+            </section>
+
+            <div class="content-grid">
+
+                <section class="results-section">
+                    <div id="loadingIndicator" class="loading-state hidden">
+                        <div class="spinner" aria-hidden="true"></div>
+                        <p>Buscando en Wikipedia...</p>
+                    </div>
+
+                    <div id="errorMessage" class="alert alert--error hidden"></div>
+
+                    <div id="resultsContainer">
+                        <div class="empty-state">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+                                <circle cx="11" cy="11" r="8"></circle>
+                                <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                            </svg>
+                            <p>Ingresa un término para comenzar la búsqueda</p>
+                        </div>
+                    </div>
+                </section>
+
+                <aside class="history-section">
+                    <div class="history-header">
+                        <h2 class="history-title">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <polyline points="12 8 12 12 14 14"></polyline>
+                                <path d="M3.05 11a9 9 0 1 0 .5-4.5"></path>
+                                <polyline points="3 3 3 7 7 7"></polyline>
+                            </svg>
+                            Historial
+                        </h2>
+                        <button id="clearHistoryBtn" class="btn-icon" title="Limpiar historial">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <polyline points="3 6 5 6 21 6"></polyline>
+                                <path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"></path>
+                            </svg>
+                        </button>
+                    </div>
+
+                    <div id="historyAlert" class="alert alert--info hidden"></div>
+
+                    <ul id="historyList" class="history-list">
+                        <li class="history-empty">No hay búsquedas recientes</li>
+                    </ul>
+                </aside>
+
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>Datos proporcionados por <a href="https://www.wikipedia.org" target="_blank" rel="noopener noreferrer">Wikipedia</a> bajo licencia <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">CC BY-SA 4.0</a></p>
+        </div>
+    </footer>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>

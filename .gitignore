@@ -1,0 +1,13 @@
+# IDE
+.idea/
+.vscode/
+
+# Docker volumes (datos locales)
+docker-data/
+
+# Logs de PHP/Apache
+*.log
+
+# Variables de entorno locales (si se usan en el futuro)
+.env
+.env.local
